@@ -1,0 +1,134 @@
+/* Dashboard Videos Styling */
+.dashboard_videos {
+  display: inline-block;
+  align-items: center;
+  width: 100%;
+  min-height: calc(100vh - 80px); 
+}
+
+.videos_container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  padding-top: 10px;
+  margin: 0 auto;
+}
+
+.video_card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #1c1c1c;
+  color: white;
+  width: 100%;
+  max-width: 1200px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  border-radius: 0;
+}
+
+.video_file video {
+  width: 350px;
+  height: auto;
+  object-fit: cover;
+  background: black;
+}
+
+.video_description {
+  flex: 1;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.video_description span {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.video_description h1 {
+  font-size: 1.5rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.video_description h1 img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.video_description p {
+  margin: 10px 0;
+  font-size: 1rem;
+  color: #ddd;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+}
+
+.update_video button {
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.update_video button:hover {
+  background-color: #555;
+}
+
+.video_link {
+    width: 90%;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.video_link:hover {
+  opacity: 0.95;
+}
+
+/* Responsive Styling for Dashboard Videos */
+@media (max-width: 768px) {
+  .video_card {
+    width: auto;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .video_description {
+    padding: 10px;
+  }
+
+  .video_description span,
+  .video_description p {
+    display: none;
+  }
+
+  .video_description h1 {
+    justify-content: center;
+    font-size: 1.2rem;
+  }
+
+  .videos_container {
+    width: 80%;
+  }
+}

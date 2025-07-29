@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PlayFrame - Profile</title>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}" />
+  </head>
+  <body>
+    <!-- Navigation Buttons -->
+    <div class="btn_nav">
+      <div class="cust_button left">
+        <a href="{% url 'dashboard:home' %}" style="text-decoration: none; color: aliceblue"><button>← Back</button></a>
+      </div>
+      <div class="cust_button right">
+        <a href="{% url 'accounts:logout' %}"><button><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</button></a>
+      </div>
+    </div>
+
+    <!-- Profile Card -->
+    <div class="profile-card">
+      <div class="profile-image">
+        <div class="image-container">
+          <img src="{{ profile.profile_image.url }}" alt="Profile Picture" />
+          <div class="edit_button">
+            <a href="{% url 'dashboard:update_profile' %}"><button>Edit Profile <i class="fa-regular fa-pen-to-square"></i></button></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-details">
+        <h1>{{ profile.username }}</h1>
+        <p>{{ profile.email }}</p>
+        <p>{{ profile.short_intro }}</p>
+        <p>{{ profile.bio }}</p>
+      </div>
+    </div>
+
+    <div class="btn_nav">
+      <div class="cust_button left">
+        <h1 style="padding: 0px; margin: 0px; color: aliceblue">Your Videos</h1>
+      </div>
+      <div class="cust_button right">
+        <a href="{% url 'dashboard:upload_vds' %}"><button>Upload +</button></a>
+      </div>
+    </div>
+    <br />
+
+    {% for video in videos %}
+      <div class="videos_container">
+        <a href="{% url 'dashboard:video_play' video.id %}"  class="video_link">
+          <div class="video_card">
+            <div class="video_file">
+              <video src="{{ video.video_file.url }}"></video>
+            </div>
+            <div class="video_description">
+              <span>{{ video.created_at }}</span>
+              <h1><img src="{{ profile.profile_image.url }}" alt="" />{{ video.title }}</h1>
+              <p>{{ video.description }}</p>
+              <p>
+                <a href="{% url 'dashboard:edit_vds' video.id %}" class="update_video"><button>Edit <i class="fa-regular fa-pen-to-square"></i></button></a>
+              </p>
+            </div>
+          </a>
+          </div>
+        
+      </div>
+    {% endfor %}
+    <br />
+
+    <script src="https://kit.fontawesome.com/87be9b1a68.js" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Play Frame - Profile</title>
+    {% load static %}
+  <link rel="stylesheet" href="{% static 'css/update_profile.css' %}">
+  <style>
+    .change-image-btn {
+        background-color: #333  !important;
+        color: white !important;
+        padding: 0px 16px;
+        border: none;
+        border-radius: 6px;
+        font-size: 14px;
+        cursor: pointer;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .change-image-btn:hover {
+    background-color: #555 !important;
+    }
+    body {
+        background-color: #000000;
+        margin: 0 !important;
+        padding: 0 !important;
+        font-family: Arial, sans-serif;
+        min-height: 100vh;
+    }
+
+    .edit-profile-form {
+        width: 80vw;
+        margin-right: 8%;
+        margin-left: 8%;
+
+        padding: 0px 0px;
+    }
+
+    .edit-profile-card {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        background-color: #121212;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+        border: 1px solid #333;
+        width: 100%;
+        gap: 40px;
+        min-height: auto;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="back-button">
+    <a href="{% url 'dashboard:profile' %}" style="text-decoration: none; color: aliceblue;"><button>← Back</button></a>
+  </div>
+ <form method="POST" enctype="multipart/form-data" class="edit-profile-form">
+    {% csrf_token %} 
+    <div class="edit-profile-card">
+      
+      <!-- LEFT SECTION -->
+    <div class="left-panel">
+        <div class="profile-image-preview">
+            <img id="previewImage" src="{{ form.instance.profile_image.url }}" alt="Profile Image" />
+        </div>
+        <!-- Change Button -->
+        <input type="file" name="profile_image" id="id_profile_image" accept="image/*" onchange="previewProfileImage(this)">
+        <div class="image-button-group">
+            <label for="id_profile_image" class="change-image-btn">Change</label>
+            <button type="submit" name="remove_image" value="true" class="remove-image-btn">Remove</button>
+        </div>
+    </div>
+      
+      <!-- RIGHT SECTION -->
+      <div class="right-panel">
+        <div class="form-group">
+          <label for="id_username">Username</label>
+          {{ form.username }}
+          {% if form.username.errors %}
+            <div class="error">{{ form.username.errors }}</div>
+          {% endif %}
+        </div>
+
+        <div class="form-group">
+          <label for="id_email">Email</label>
+          {{ form.email }}
+          {% if form.email.errors %}
+            <div class="error">{{ form.email.errors }}</div>
+          {% endif %}
+        </div>
+
+        <div class="form-group">
+          <label for="id_short_intro">Short Intro</label>
+          {{ form.short_intro }}
+          {% if form.short_intro.errors %}
+            <div class="error">{{ form.short_intro.errors }}</div>
+          {% endif %}
+        </div>
+
+        <div class="form-group">
+          <label for="id_bio">Bio</label>
+          {{ form.bio }}
+          {% if form.bio.errors %}
+            <div class="error">{{ form.bio.errors }}</div>
+          {% endif %}
+        </div>
+
+        <button type="submit" class="Update_btn">Update Profile</button>
+      </div>
+    </div>
+  </form>
+
+<script src="{% static 'js/profile_img.js' %}"></script>
+
+</body>
+</html>

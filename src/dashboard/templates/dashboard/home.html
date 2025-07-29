@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <title>PlayFrame</title>
+    <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard_videos.css' %}">
+
+  </head>
+  <body>
+    <nav class="navbar">
+        <div class="left">
+          <a href="{% url 'dashboard:home' %}">
+            <img src="{% static 'img/logo.png' %}" alt="Logo" class="logo" >
+          </a>
+        </div>
+
+        <div class="center">
+          <form action="" method="get" class="search-box">
+            <div class="search-wrapper">
+              <input type="text" name="search" id="search-input" placeholder="Search" value="{{ request.GET.search }}">
+              {% if request.GET.search %}
+                <a href="{% url 'dashboard:home' %}" class="clear-button">&times;</a>
+              {% endif %}
+            </div>
+            <button type="submit" class="search-button">Search</button>
+          </form>
+        </div>
+        {% if is_logged %}
+        <div class="right">
+            <a href="{% url 'dashboard:profile' %}" class="profile_icon">
+              <img src="{{ profile.profile_image.url }}" alt="" class="profile_img" />
+            </a>
+        </div>
+        {% else %}
+        <div class="right">
+          <a href="{% url 'accounts:login' %}" style="text-decoration: none;">
+            <button class="sign-in">
+            <span class="user-icon">&#128100;</span> Sign in
+            </button>
+          </a>
+        </div>
+        {% endif %}
+    </nav>
+    <hr style="color: aliceblue;  margin: 0px 20px;">
+<br>
+
+
+<div class="dashboard_videos">
+
+{% for video in videos %}
+  <div class="videos_container">
+    <a href="{% url 'dashboard:video_play' video.id %}"  class="video_link">
+      <div class="video_card">
+        <div class="video_file">
+          <video src="{{ video.video_file.url }}"></video>
+        </div>
+        <div class="video_description">
+          <span>{{ video.created_at }}</span>
+          <h1><img src="{{ video.username.profile.profile_image.url }}" alt="" />{{ video.title }}</h1>
+          <p>{{ video.description }}</p>
+        </div>
+      </div>
+    </a>
+  </div>
+{% endfor %}
+
+</div>
+<br><br><br>
+<hr style="color: aliceblue; padding: 0px; margin: 0px 20px;">
+
+
+{% if not request.GET.search %}
+<a href="{% url 'dashboard:home' %}" style="text-decoration: none;">
+<div class="refresh">
+  <br>
+  <i class="fa-solid fa-rotate-right"></i>
+  <br>
+</div>
+</a>
+{% endif %}
+
+
+<script src="https://kit.fontawesome.com/87be9b1a68.js" crossorigin="anonymous"></script>
+<script>
+  const input = document.getElementById("search-input");
+  const clearBtn = document.querySelector(".clear-button");
+
+  if (input && clearBtn) {
+    function toggleClearButton() {
+      clearBtn.style.display = input.value ? "block" : "none";
+    }
+
+    input.addEventListener("input", toggleClearButton);
+    document.addEventListener("DOMContentLoaded", toggleClearButton);
+  }
+</script>
+
+  </body>
+</html>

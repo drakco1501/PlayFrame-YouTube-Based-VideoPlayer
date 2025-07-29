@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PlayFrame</title>
+    <link rel="stylesheet" href="{% static 'css/video_play.css' %}" />
+    <style>
+      video {
+        width: 100%;
+        max-width: 800px;
+      }
+    </style>
+  </head>
+  <body>
+  <div class="back-button">
+    <button onclick="history.back()">← Back</button></a>
+  </div>
+
+  <div class="container" style="margin-top: 60px;">
+    <div class="container_left">
+      <div class="video-container">
+        <div id="video_holder">
+          <video width="100%" height="auto" controls autoplay="false">
+            <source src="{{ video.video_file.url }}" type="video/mp4" />Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="video-info">
+          <h1>{{ video.title }}</h1>
+          <p>{{ video.description }}</p>
+          <p>Uploaded: {{ video.created_at|date:'F d, Y' }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="container_right">
+        {% for suggestion in suggestions %}
+        <div class="videos_container">
+          <a href="{% url 'dashboard:video_play' suggestion.id %}"  class="video_link">
+            <div class="video_card">
+              <div class="video_file">
+                <video src="{{ suggestion.video_file.url }}"></video>
+              </div>
+              <div class="video_description">
+                <span>{{ suggestion.created_at }}</span>
+                <h1> <img src="{{ suggestion.username.profile.profile_image.url }}" alt="" width="25px" height="25px" style="border-radius: 50%;"> {{ suggestion.title }}</h1>
+                <p>{{ suggestion.description }}</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+   
+  </body>
+</html>

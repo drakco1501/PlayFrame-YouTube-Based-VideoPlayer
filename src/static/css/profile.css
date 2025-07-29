@@ -1,0 +1,255 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #121212;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Navigation buttons */
+.btn_nav {
+  width: 90%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  position: relative;
+}
+
+.cust_button button {
+  background-color: #1a1a1a;
+  color: white;
+  border: 1px solid #555;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cust_button button:hover {
+  background-color: #333;
+}
+
+.profile-card {
+  background-color: #1e1e1e;
+  color: white;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  max-width: 1200px;
+  margin-top: 30px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+.profile-image {
+  background-color: #1e1e1e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  flex: 0 0 280px;
+}
+
+.profile-image img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+}
+
+/* Edit button */
+.edit_button {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.edit_button button {
+  background-color: #1a1a1a;
+  color: white;
+  border: 1px solid #555;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit_button button:hover {
+  background-color: #333;
+}
+
+.profile-details {
+  flex: 1;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profile-details h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 2vw + 1rem, 2.5rem);
+}
+
+.profile-details p {
+  margin: 10px 0;
+  font-size: clamp(0.9rem, 1vw + 0.6rem, 1.2rem);
+  color: #ccc;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .profile-card {
+    flex-direction: column;
+    width: 95%;
+  }
+
+  .profile-image {
+    padding: 20px;
+    flex: none;
+  }
+
+  .profile-details {
+    padding: 30px 20px;
+    text-align: center;
+  }
+
+  .btn_nav {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .cust_button.left {
+    align-self: flex-start;
+    margin-bottom: 10px;
+  }
+}
+
+
+.videos_container {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  padding-top: 10px;
+}
+
+.video_card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #1c1c1c;
+  color: white;
+  width: 100%;
+  max-width: 1200px; /* Increased max-width */
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  border-radius: 0; /* Removed border radius */
+}
+
+.video_file video {
+  width: 350px;
+  height: auto;
+  object-fit: cover;
+  background: black;
+}
+
+.video_description {
+  flex: 1;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.video_description span {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.video_description h1 {
+  font-size: 1.5rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.video_description h1 img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+  /* border-radius removed */
+}
+
+.video_description p {
+  margin: 10px 0;
+  font-size: 1rem;
+  color: #ddd;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+
+  /* Future-friendly syntax (not widely supported yet) */
+  line-clamp: 3;
+
+  overflow: hidden;
+}
+
+.update_video button {
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.update_video button:hover {
+  background-color: #555;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .video_card {
+    width: auto;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .video_description {
+    padding: 10px;
+  }
+
+  .video_description span,
+  .video_description p {
+    display: none;
+  }
+
+  .video_description h1 {
+    justify-content: center;
+    font-size: 1.2rem;
+  }
+}
+.video_link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.video_link:hover {
+  opacity: 0.95;
+}

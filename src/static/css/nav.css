@@ -1,0 +1,274 @@
+body {
+  margin: 0;
+  background-color: #121212;
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  background-color: #121212;
+  color: white;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto; /* stays compact */
+}
+
+.logo {
+  height: 45px;
+  margin-left: 20px;
+  margin-right: 8px;
+  padding: 4px;
+  border-radius: 16px;
+}
+
+.center {
+  flex: 1 1 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.search-box {
+  display: flex;
+  width: 100%;
+  max-width: 700px;
+}
+
+.search-box input {
+  flex: 1;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 40px 0 0 40px;
+  background-color: #212121;
+  color: white;
+  font-size: 16px;
+  min-width: 0;
+}
+
+.search-button {
+  padding: 10px 24px;
+  border: none;
+  background-color: #333;
+  color: white;
+  border-radius: 0 40px 40px 0;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 20px;
+}
+
+.sign-in {
+  border: 1px solid #3ea6ff;
+  background: none;
+  color: #3ea6ff;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: bold;
+}
+
+.sign-in:hover {
+  background-color: rgba(62, 166, 255, 0.1);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .center {
+    width: 100%;
+    padding: 0 16px;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .right {
+    justify-content: center;
+    margin-right: 0;
+  }
+}
+
+.profile_icon img{
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+.profile_icon img:hover {
+  box-shadow: 0 0 8px #3ea6ff;
+  transform: scale(1.05);
+}
+
+
+.videos_container {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  padding-top: 10px;
+}
+
+.video_card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #1c1c1c;
+  color: white;
+  width: 100%;
+  max-width: 1200px; /* Increased max-width */
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  border-radius: 0; /* Removed border radius */
+}
+
+.video_file video {
+  width: 350px;
+  height: auto;
+  object-fit: cover;
+  background: black;
+}
+
+.video_description {
+  flex: 1;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.video_description span {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.video_description h1 {
+  font-size: 1.5rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.video_description h1 img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+  /* border-radius removed */
+}
+
+.video_description p {
+  margin: 10px 0;
+  font-size: 1rem;
+  color: #ddd;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+
+  /* Future-friendly syntax (not widely supported yet) */
+  line-clamp: 3;
+
+  overflow: hidden;
+}
+
+
+.search-box {
+  display: flex;
+  align-items: center;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.search-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+.search-wrapper input[type="text"] {
+  width: 100%;
+  padding: 10px 40px 10px 16px; /* space for the '×' on the right */
+  border: none;
+  border-radius: 40px 0px 0px 40px;
+  background-color: #212121;
+  color: white;
+  font-size: 16px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.clear-button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #999;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0 6px;
+}
+
+.clear-button:hover {
+  color: #fff;
+}
+
+.search-button {
+  margin-left: 0px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 0px 40px 40px 0px;
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: black;
+}
+
+.refresh{
+  display: flex;
+  background-color: #121212;
+}
+.refresh i{
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #121212;
+  color: white ;
+  font-size: 2em;
+}

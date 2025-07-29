@@ -1,0 +1,217 @@
+/* Global Styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #1a1a1a;
+  color: white;
+}
+
+/* Container Flex Layout */
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Left Section: Main Video Player */
+.container_left {
+  flex: 2;
+  max-width: 60%;
+  box-sizing: border-box;
+}
+
+.video-container {
+  width: 100%;
+  padding-right: 20px;
+  border-right: 3px solid white;
+}
+
+.video-container video {
+  width: 100%;
+  max-width: 800px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.video-info {
+  margin-top: 20px;
+}
+
+.video-info h1 {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.video-info p {
+  margin: 10px 0;
+  line-height: 1.6;
+  color: #ccc;
+}
+
+/* Right Section: Suggested Videos */
+.container_right {
+  flex: 1;
+  max-width: 40%;
+  overflow-y: auto;
+  max-height: 90vh;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+
+/* Individual Suggested Video Card */
+.videos_container {
+  margin-bottom: 15px;
+}
+
+.video_card {
+  display: flex;
+  flex-direction: row;
+  background-color: #1c1c1c;
+  color: white;
+  width: 100%;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+  /* Removed transform scale on hover */
+}
+.video_file video {
+  width: 160px;
+  height: 90px;
+  object-fit: cover;
+  background: black;
+}
+
+.video_description {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+}
+
+.video_description span {
+  font-size: 0.7rem;
+  color: #aaa;
+  margin-bottom: 4px;
+}
+
+.video_description h1 {
+  font-size: 1rem;
+  margin: 0 0 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.video_description h1 img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.video_description p {
+  font-size: 0.85rem;
+  color: #ccc;
+  margin: 0;
+  line-height: 1.3;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  /* Vendor-prefixed line clamp */
+  -webkit-line-clamp: 2;
+
+  /* Official line-clamp with display: box fallback (less supported) */
+  line-clamp: 2;
+}
+.video_link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.video_link:hover {
+  opacity: 0.95;
+}
+
+/* Optional: Hide Edit Button */
+.update_video {
+  display: none;
+}
+
+/* Scrollbar Styling */
+.container_right::-webkit-scrollbar {
+  width: 6px;
+}
+.container_right::-webkit-scrollbar-thumb {
+  background-color: #555;
+  border-radius: 4px;
+}
+.container_right::-webkit-scrollbar-track {
+  background-color: #1a1a1a;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .container_left,
+  .container_right {
+    max-width: 100%;
+    flex: none;
+  }
+
+  .video_card {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .video_file video {
+    width: 100%;
+    height: auto;
+  }
+
+  .video_description {
+    text-align: center;
+    padding: 10px;
+  }
+
+  .video_description span {
+    display: none;
+  }
+
+  .video_description h1 {
+    justify-content: center;
+    font-size: 1.2rem;
+  }
+}
+
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.back-button button {
+  background-color: #1a1a1a;
+  color: white;
+  border: 1px solid #555;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.back-button button:hover {
+  background-color: #333;
+}
